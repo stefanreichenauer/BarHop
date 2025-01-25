@@ -3,15 +3,17 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Airflow : MonoBehaviour
 {
-    [SerializeField] private Vector2 airflowVector;
-    [SerializeField] private Vector2 velocityReduction;
-    [SerializeField] private PlaneDefiner planeDefiner;
 
+    [SerializeField] private PlaneDefiner planeDefiner;
+    [SerializeField] private float airStrength;
+
+    private Vector2 airflowVector;
     private Rigidbody otherRigidbody;
     private Plane propellerPlane;
     private void Start()
     {
         propellerPlane = planeDefiner.getPlane();
+        airflowVector = planeDefiner.getNormal()*airStrength;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -46,9 +48,9 @@ public class Airflow : MonoBehaviour
             }
             float velocityX = otherRigidbody.linearVelocity.x;
             float velocityY = otherRigidbody.linearVelocity.y;
-            velocityX *= (1 - (velocityReduction.x/ distance_parameter));
+
             velocityX += airflowVector.x;
-            velocityY *= (1 - (velocityReduction.y/ distance_parameter));
+
             velocityY += airflowVector.y;
             otherRigidbody.linearVelocity = new Vector3(velocityX, velocityY, otherRigidbody.linearVelocity.z);
         }
