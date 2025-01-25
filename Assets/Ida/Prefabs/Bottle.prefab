@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a2121bad0c11b4ab459ad2359f4dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounciness: 0.8
+  bounce: {fileID: 11400000, guid: 0786a690715bb8844bca726d63664e9e, type: 2}
 --- !u!1 &6122772827577065892
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,4 +257,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a2121bad0c11b4ab459ad2359f4dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounciness: 0.8
+  bounce: {fileID: 11400000, guid: 0786a690715bb8844bca726d63664e9e, type: 2}

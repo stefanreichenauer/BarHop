@@ -4,9 +4,15 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class BouncySurface : MonoBehaviour
 {
-    [SerializeField] private float bounciness;
+    [SerializeField] private Bounce bounce;
     private Rigidbody otherRigidbody;
     private float collidingBounciness = -1;
+    private float bounciness;
+
+    private void Start()
+    {
+        bounciness = bounce.getBounciness();
+    }
     private void OnCollisionExit(Collision collision)
     {
         if (otherRigidbody != null)
