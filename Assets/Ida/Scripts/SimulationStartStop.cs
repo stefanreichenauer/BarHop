@@ -28,8 +28,9 @@ public class SimulationStartStop : MonoBehaviour
         {
             bubbleRenderer.enabled = true;
         }
+        bubble.linearVelocity = new Vector3(0, 0, 0);
         bubble.transform.position = bubbleOriginPos;
         bubble.isKinematic = true;
-        bubble.linearVelocity = new Vector3(0,0,0);
+        
     }
 }
