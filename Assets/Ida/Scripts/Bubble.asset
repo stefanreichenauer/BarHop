@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdba2276d48bd94ba118d79c7423372, type: 3}
   m_Name: Bubble
   m_EditorClassIdentifier: 
-  mass: 0.5
-  radius: 1
+  mass: 1
   bounciness: 1
