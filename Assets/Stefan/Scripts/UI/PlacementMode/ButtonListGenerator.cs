@@ -24,7 +24,7 @@ public class ButtonListGenerator : MonoBehaviour
         GameObject button = (GameObject)Instantiate(buttonPrefab);
         button.transform.SetParent(gameObject.transform);
         button.GetComponent<Button>().onClick.AddListener(() => OnClick(data.Prefab, button));
-        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = data.DisplayName;
+        button.transform.GetChild(0).GetComponent<Image>().sprite = data.Sprite;
     }
 
     void OnClick(GameObject prefabToSpawn, GameObject buttonRef)
