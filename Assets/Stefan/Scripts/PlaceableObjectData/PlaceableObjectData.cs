@@ -5,4 +5,5 @@ public class PlaceableObjectData : ScriptableObject
 {
     public string DisplayName;
     public GameObject Prefab;
+    public GameObject previewModel;
 }
