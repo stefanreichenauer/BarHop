@@ -29,11 +29,11 @@ public class GameStateController : MonoBehaviour
 
     private void Start()
     {
-        StopSimulation();
+        
 
         bubbleRenderer = bubble.GetComponent<MeshRenderer>();
         bubbleOriginPos = bubble.transform.position;
-
+        StopSimulation();
         startButton.onClick.AddListener(() => StartSimulation());
         stopButton.onClick.AddListener(() => StopSimulation());
         restartButton.onClick.AddListener(() => RestartLevel());
@@ -59,7 +59,6 @@ public class GameStateController : MonoBehaviour
         {
             bubbleRenderer.enabled = true;
         }
-        bubble.linearVelocity = new Vector3(0, 0, 0);
         bubble.transform.position = bubbleOriginPos;
         bubble.isKinematic = true;
     }
