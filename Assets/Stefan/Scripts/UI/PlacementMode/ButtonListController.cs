@@ -10,7 +10,10 @@ public class ButtonListController : MonoBehaviour
     GameObject activeButton;
 
     [SerializeField]
-    float rotationSpeed = 75f;
+    float rotationSpeed = 100f;
+
+    [SerializeField]
+    private GameStateController gameStateController;
 
     void Start()
     {
@@ -31,6 +34,7 @@ public class ButtonListController : MonoBehaviour
                 Destroy(objectToPlace);
                 objectToPlace = null;
                 isInPlacementMode = false;
+                gameStateController.HandleUIGameStateChange(GameState.CHOOSING_OBJECTS);
             }
 
             if (Input.GetMouseButtonDown(0))
@@ -40,6 +44,7 @@ public class ButtonListController : MonoBehaviour
                 objectToPlace = null;
                 isInPlacementMode = false;
                 Destroy(activeButton);
+                gameStateController.HandleUIGameStateChange(GameState.CHOOSING_OBJECTS);
             }
 
             float mouseWheelInput = Input.GetAxis("Mouse ScrollWheel");
@@ -68,5 +73,7 @@ public class ButtonListController : MonoBehaviour
 
         buttonPanel.SetActive(false);
         placementActivePanel.SetActive(true);
+        gameStateController.HandleUIGameStateChange(GameState.PLACING_OBJECTS);
     }
+
 }

@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Jelly
   Prefab: {fileID: 8764168210961044139, guid: 7453db5bdbc7f0d4aa1f7adc321b89e0, type: 3}
+  previewModel: {fileID: 919132149155446097, guid: 0778724aa9395f948b15e52099874e36, type: 3}

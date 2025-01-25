@@ -112,7 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07431be71e8725b48bcb83571011ec6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planeNormal: {x: 0, y: 0, z: 0}
+  fanSolids: {fileID: 1239789499749600118}
+  airflow: {fileID: 3206777734482856874}
 --- !u!1 &3206777734482856874
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,9 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a40585ab3bcd9a47897d44756113f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  airflowVector: {x: 0.5, y: 0.125}
   velocityReduction: {x: 0, y: 0}
   planeDefiner: {fileID: 3285200106404664438}
+  airStrength: 1
 --- !u!1 &5461881552582173815
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   airflowRotorBlade: {fileID: 41108872802324470}
+  rotationSpeed: 100
 --- !u!4 &7476440827380759656 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5721979756664688666, guid: 2d85b32c38060a744bb23d05e2b8db71, type: 3}
