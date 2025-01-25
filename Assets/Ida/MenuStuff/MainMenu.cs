@@ -19,10 +19,10 @@ public class MainMenu : MonoBehaviour
         }
         
     }
-    public void LoadLevel(int levelNum)
+    public void LoadLevel(string levelName)
     {
         StartCoroutine(startGameAfterSound());
-        SceneManager.LoadScene(levelNum);
+        SceneManager.LoadScene(levelName);
     }
 
     public void QuitGame()
