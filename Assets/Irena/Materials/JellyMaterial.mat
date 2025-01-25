@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: JellyMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: f7d97b67a61208942aff288f00e577da, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 4d70003fffbbd814697a6f2f1d5b785b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -130,21 +130,25 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _cutoff_distance: 0.12
-    - _cutoff_smothness: 0.414
-    - _inner_rim_power: 1
-    - _inner_rim_smoothness: 0.147
-    - _outer_rim_smothness: 0.598
-    - _rimpower: 0.5
+    - _bottomLine: 0.68
+    - _cutoff_distance: 0.65
+    - _cutoff_smothness: 0.68
+    - _inner_rim_power: 0.52
+    - _inner_rim_smoothness: 0.34
+    - _outer_rim_smothness: 0.67
+    - _rimpower: 0.55
+    - _topLine: 1
     - _transparency: 1
-    - _view_cuttoff: 0.587
+    - _view_cuttoff: 0.78
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0, g: 0.44313726, b: 0.039319083, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _inner_glow_color: {r: 1, g: 0.6094339, b: 0.6094339, a: 1}
-    - _rim_color: {r: 0, g: 1, b: 0.99822426, a: 1}
-    - _specular_color: {r: 0.03449613, g: 0.8747387, b: 0.9622642, a: 1}
+    - _bottomColor: {r: 0.3687822, g: 0.78113204, b: 0.27560696, a: 1}
+    - _inner_glow_color: {r: 0, g: 0.6661047, b: 0.9547169, a: 1}
+    - _rim_color: {r: 0.22891903, g: 1, b: 0, a: 1}
+    - _specular_color: {r: 0.6030117, g: 0.97735846, b: 0.8011953, a: 1}
+    - _topColor: {r: 0.53425694, g: 1, b: 0, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
