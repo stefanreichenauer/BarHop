@@ -1159,6 +1159,7 @@ MonoBehaviour:
   restartButton: {fileID: 7060317144905353868}
   backToLevelSelectButton: {fileID: 946963067011431122}
   placeableObjectChooserPanel: {fileID: 5134204344114618850}
+  levelSelectReference: {fileID: 102900000, guid: 2a2425ef3491e2047a686e693d6e2041, type: 3}
 --- !u!1001 &823771959805596356
 PrefabInstance:
   m_ObjectHideFlags: 0

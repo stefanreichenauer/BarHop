@@ -11,16 +11,21 @@ public enum GameState
 
 public class GameStateController : MonoBehaviour
 {
+    [Header("Physic Elements")]
     [SerializeField] Rigidbody bubble;
     [SerializeField] Vector3 bubbleStartVelocity;
     private Vector3 bubbleOriginPos;
     private MeshRenderer bubbleRenderer;
 
+    [Header("UI Elements")]
     [SerializeField] Button startButton;
     [SerializeField] Button stopButton;
     [SerializeField] Button restartButton;
     [SerializeField] Button backToLevelSelectButton;
     [SerializeField] GameObject placeableObjectChooserPanel;
+
+    [Header("Level References")]
+    [SerializeField] UnityEditor.SceneAsset levelSelectReference;
 
     private void Start()
     {
@@ -61,7 +66,7 @@ public class GameStateController : MonoBehaviour
 
     private void LoadLevelSelect()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(levelSelectReference.name);
     }
 
     private void RestartLevel()

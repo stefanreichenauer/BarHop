@@ -15,6 +15,9 @@ public class ButtonListController : MonoBehaviour
     [SerializeField]
     private GameStateController gameStateController;
 
+    private GameObject previewObject; 
+    private bool canPlace = true;
+
     void Start()
     {
         GameObject canvas = gameObject;
@@ -70,9 +73,35 @@ public class ButtonListController : MonoBehaviour
         activeButton = buttonRef;
         isInPlacementMode = true;
         objectToPlace = Instantiate(prefabToSpawn);
-
+        CreatePreviewObject(prefabToSpawn, new Vector2(0,0));
         buttonPanel.SetActive(false);
         placementActivePanel.SetActive(true);
         gameStateController.HandleUIGameStateChange(GameState.PLACING_OBJECTS);
     }
+
+
+    private void CreatePreviewObject(GameObject fbxPrefab, Vector2 position)
+    {
+        previewObject = Instantiate(fbxPrefab, position, Quaternion.identity);
+        previewObject.GetComponent<Collider>().isTrigger = true;
+        SetPreviewMaterial(previewObject, Color.green);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("OnTriggerEnter");
+        if (previewObject != null)
+        {
+            canPlace = false;
+            SetPreviewMaterial(previewObject, Color.red);
+        }
+    }
+    private void SetPreviewMaterial(GameObject obj, Color color)
+    {
+        Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();
+        foreach (var renderer in renderers)
+        {
+            renderer.material.color = color;
+        }
+    }
+
 }
