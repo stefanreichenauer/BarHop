@@ -1,10 +1,12 @@
 using NUnit.Framework.Constraints;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class BouncySurface : MonoBehaviour
 {
     [SerializeField] private Bounce bounce;
+
     private Rigidbody otherRigidbody;
     private float collidingBounciness = -1;
     private float bounciness;
@@ -25,7 +27,7 @@ public class BouncySurface : MonoBehaviour
             {
                 otherRigidbody.linearVelocity *= bounciness;
             }
-            
+            StopAllCoroutines();
 
         }
         
@@ -33,16 +35,29 @@ public class BouncySurface : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
-        ApplyBubbleParameters para = otherRigidbody.GetComponent<ApplyBubbleParameters>();
-        if (para != null)
+        BubblePopper popper = other.gameObject.GetComponent<BubblePopper>();
+
+        ApplyBubbleParameters bubbleParameter = otherRigidbody.GetComponent<ApplyBubbleParameters>();
+        if (bubbleParameter != null)
         {
-            collidingBounciness = para.getBounciness();
+            collidingBounciness = bubbleParameter.getBounciness();
+            if (popper != null)
+            {
+                StartCoroutine(shouldBubblePop(popper));
+            }
         }
         else
         {
             collidingBounciness = -1;
         }
         
+
+    }
+
+    private IEnumerator shouldBubblePop(BubblePopper popper)
+    {
+        yield return new WaitForSeconds(popper.max_surface_time);
+        popper.pop();
 
     }
 }
