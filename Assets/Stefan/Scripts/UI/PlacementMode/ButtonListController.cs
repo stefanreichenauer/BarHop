@@ -1,4 +1,5 @@
 using NUnit.Framework.Internal;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonListController : MonoBehaviour
@@ -8,12 +9,16 @@ public class ButtonListController : MonoBehaviour
     GameObject objectToPlace;
     bool isInPlacementMode = false;
     GameObject activeButton;
+    bool canPlaceObject = false;
 
     [SerializeField]
     float rotationSpeed = 100f;
 
     [SerializeField]
     private GameStateController gameStateController;
+
+    [SerializeField]
+    private Vector2 collisionCheckBoxSize = Vector2.one;
 
     void Start()
     {
@@ -27,24 +32,40 @@ public class ButtonListController : MonoBehaviour
     {
         if (isInPlacementMode)
         {
-            if (Input.GetButtonDown("Cancel"))
+            canPlaceObject = true;
+            Collider[] colliders = Physics.OverlapBox(objectToPlace.transform.position, new Vector3(collisionCheckBoxSize.x, collisionCheckBoxSize.y, 1), Quaternion.identity);
+
+            foreach (var collider in colliders)
             {
-                buttonPanel.SetActive(true);
-                placementActivePanel.SetActive(false);
-                Destroy(objectToPlace);
-                objectToPlace = null;
-                isInPlacementMode = false;
-                gameStateController.HandleUIGameStateChange(GameState.CHOOSING_OBJECTS);
+                if(GetRootParent(collider.gameObject) == objectToPlace)
+                {
+                    continue;
+                }
+                canPlaceObject = false;
+                break;
             }
 
-            if (Input.GetMouseButtonDown(0))
+            if (canPlaceObject)
             {
-                buttonPanel.SetActive(true);
-                placementActivePanel.SetActive(false);
-                objectToPlace = null;
-                isInPlacementMode = false;
-                Destroy(activeButton);
-                gameStateController.HandleUIGameStateChange(GameState.CHOOSING_OBJECTS);
+                if (Input.GetButtonDown("Cancel"))
+                {
+                    buttonPanel.SetActive(true);
+                    placementActivePanel.SetActive(false);
+                    Destroy(objectToPlace);
+                    objectToPlace = null;
+                    isInPlacementMode = false;
+                    gameStateController.HandleUIGameStateChange(GameState.CHOOSING_OBJECTS); 
+                }
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    buttonPanel.SetActive(true);
+                    placementActivePanel.SetActive(false);
+                    objectToPlace = null;
+                    isInPlacementMode = false;
+                    Destroy(activeButton);
+                    gameStateController.HandleUIGameStateChange(GameState.CHOOSING_OBJECTS);
+                }
             }
 
             float mouseWheelInput = Input.GetAxis("Mouse ScrollWheel");
@@ -56,13 +77,24 @@ public class ButtonListController : MonoBehaviour
 
         }
 
-            if (objectToPlace != null)
+        if (objectToPlace != null)
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10f));
             mousePosition.z = 0;
             objectToPlace.transform.position = mousePosition;
         }
 
+    }
+    private GameObject GetRootParent(GameObject obj)
+    {
+        Transform current = obj.transform;
+
+        while (current.parent != null)
+        {
+            current = current.parent;
+        }
+
+        return current.gameObject;
     }
 
     public void OnButtonClicked(GameObject prefabToSpawn, GameObject buttonRef)
@@ -75,5 +107,4 @@ public class ButtonListController : MonoBehaviour
         placementActivePanel.SetActive(true);
         gameStateController.HandleUIGameStateChange(GameState.PLACING_OBJECTS);
     }
-
 }
