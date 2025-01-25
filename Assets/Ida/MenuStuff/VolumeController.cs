@@ -13,7 +13,7 @@ public class VolumeController : MonoBehaviour
 
     private void Awake()
     {
-        volumeManager = FindObjectOfType<VolumeManager>();
+        volumeManager = FindFirstObjectByType<VolumeManager>();
         if (volumeManager == null)
         {
             Debug.LogWarning("Could not find Volume Manager!");

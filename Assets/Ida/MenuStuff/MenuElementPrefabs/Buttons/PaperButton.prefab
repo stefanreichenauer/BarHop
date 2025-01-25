@@ -105,40 +105,20 @@ PrefabInstance:
       value: PaperButton
       objectReference: {fileID: 0}
     - target: {fileID: 8350595564556794259, guid: b2871d795839fcb4d90f112e9d07bc4f, type: 3}
-      propertyPath: m_text
-      value: Test text
-      objectReference: {fileID: 0}
-    - target: {fileID: 8350595564556794259, guid: b2871d795839fcb4d90f112e9d07bc4f, type: 3}
-      propertyPath: m_margin.w
-      value: 11.522437
+      propertyPath: m_fontSize
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8350595564556794259, guid: b2871d795839fcb4d90f112e9d07bc4f, type: 3}
       propertyPath: m_margin.x
       value: 7.363556
       objectReference: {fileID: 0}
     - target: {fileID: 8350595564556794259, guid: b2871d795839fcb4d90f112e9d07bc4f, type: 3}
-      propertyPath: m_margin.y
-      value: 9.720074
-      objectReference: {fileID: 0}
-    - target: {fileID: 8350595564556794259, guid: b2871d795839fcb4d90f112e9d07bc4f, type: 3}
       propertyPath: m_margin.z
       value: 7.997986
       objectReference: {fileID: 0}
     - target: {fileID: 8350595564556794259, guid: b2871d795839fcb4d90f112e9d07bc4f, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: eee1bd1766776b445b45321a4f4948bc, type: 2}
-    - target: {fileID: 8350595564556794259, guid: b2871d795839fcb4d90f112e9d07bc4f, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 6562384664319253484, guid: eee1bd1766776b445b45321a4f4948bc, type: 2}
-    - target: {fileID: 8350595564556794259, guid: b2871d795839fcb4d90f112e9d07bc4f, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4279707962
-      objectReference: {fileID: 0}
-    - target: {fileID: 8350595564556794259, guid: b2871d795839fcb4d90f112e9d07bc4f, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
+      propertyPath: m_fontSizeBase
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
