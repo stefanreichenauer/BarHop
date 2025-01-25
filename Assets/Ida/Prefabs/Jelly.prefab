@@ -381,7 +381,7 @@ MonoBehaviour:
   specularColor: {r: 0, g: 0, b: 0, a: 1}
   innerGlowColor: {r: 0.9701388, g: 1, b: 0, a: 1}
   rimColor: {r: 0.21919365, g: 0.23773581, b: 0.20050548, a: 1}
-  transparency: 0.91
+  transparency: 1
 --- !u!1 &8764168210961044139
 GameObject:
   m_ObjectHideFlags: 0
