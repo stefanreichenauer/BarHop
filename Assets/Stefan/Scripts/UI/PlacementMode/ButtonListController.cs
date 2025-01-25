@@ -3,29 +3,20 @@ using UnityEngine;
 
 public class ButtonListController : MonoBehaviour
 {
-
-    GameObject canvas;
-
     GameObject buttonPanel;
     GameObject placementActivePanel;
-
-    [SerializeField]
-    private GameObject prefabToPlace;
-
     GameObject objectToPlace;
-
     bool isInPlacementMode = false;
+    GameObject activeButton;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        canvas = gameObject;
+        GameObject canvas = gameObject;
         buttonPanel = canvas.transform.Find("ButtonPanel").gameObject;
         placementActivePanel = canvas.transform.Find("PlacementActivePanel").gameObject;
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -44,6 +35,7 @@ public class ButtonListController : MonoBehaviour
             placementActivePanel.SetActive(false);
             objectToPlace = null;
             isInPlacementMode = false;
+            Destroy(activeButton);
         }
 
         if (objectToPlace != null)
@@ -55,10 +47,11 @@ public class ButtonListController : MonoBehaviour
 
     }
 
-    public void OnButtonClicked(int test)
+    public void OnButtonClicked(GameObject prefabToSpawn, GameObject buttonRef)
     {
+        activeButton = buttonRef;
         isInPlacementMode = true;
-        objectToPlace = Instantiate(prefabToPlace);
+        objectToPlace = Instantiate(prefabToSpawn);
 
         buttonPanel.SetActive(false);
         placementActivePanel.SetActive(true);
