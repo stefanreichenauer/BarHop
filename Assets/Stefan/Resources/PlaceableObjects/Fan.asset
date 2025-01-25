@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Fan
   Prefab: {fileID: 5461881552582173815, guid: 706218f9bc1bffd4180b52a6251c4f0f, type: 3}
+  previewModel: {fileID: 919132149155446097, guid: b290bf56a3a7237408032cbbeecaae35, type: 3}
