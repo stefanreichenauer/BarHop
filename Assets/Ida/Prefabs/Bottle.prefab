@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 7567347397980715237}
   - component: {fileID: 8888209976296502575}
   - component: {fileID: 8865304822335563414}
+  - component: {fileID: 6642700746386141420}
   m_Layer: 0
   m_Name: Bottle
   m_TagString: Untagged
@@ -167,7 +168,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 3093913065979245295, guid: ceee38e320e27f04c910a4eed7bfa2d9, type: 3}
+  - {fileID: 2100000, guid: 9940108b32f103c4ebb430e05fd822ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -189,6 +190,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6642700746386141420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6122772827577065892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63f89a454f84fc4599b15235ec5ca41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectColor: {r: 0, g: 0.3735848, b: 0, a: 1}
+  specularColor: {r: 0.5956354, g: 0.92945594, b: 0.97735846, a: 1}
+  innerGlowColor: {r: 0.85068226, g: 0.70299035, b: 0.9245283, a: 1}
+  rimColor: {r: 0.027020127, g: 0.9547169, b: 0.85534286, a: 1}
+  transparency: 0.95
 --- !u!1 &7183850024874192350
 GameObject:
   m_ObjectHideFlags: 0
