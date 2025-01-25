@@ -24,7 +24,7 @@ public class Airflow : MonoBehaviour
         {
 
             Rigidbody enteredRigidbody = other.GetComponent<Rigidbody>();
-            if (enteredRigidbody != null && !enteredRigidbody.isKinematic)
+            if (enteredRigidbody != null && other.gameObject.CompareTag("Bubble"))
             {
                 otherRigidbody = enteredRigidbody;
             }
@@ -37,7 +37,7 @@ public class Airflow : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (otherRigidbody!=null)
+        if (otherRigidbody!=null && !otherRigidbody.isKinematic)
         {
             float distance_parameter = Mathf.Abs(propellerPlane.GetDistanceToPoint(other.transform.position));
             if(distance_parameter == 0)
