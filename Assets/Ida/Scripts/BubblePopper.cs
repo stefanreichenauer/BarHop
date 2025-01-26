@@ -5,7 +5,7 @@ public class BubblePopper : MonoBehaviour
     private MeshRenderer bubbleRenderer;
     [SerializeField] public float max_surface_time = 0.2f;
     [SerializeField] private AudioSource popSound;
-    private bool is_popped;
+    public bool is_popped;
 
     private void Start()
     {
