@@ -26,14 +26,15 @@ public class ButtonListGenerator : MonoBehaviour
     {
         GameObject button = (GameObject)Instantiate(buttonPrefab);
         button.transform.SetParent(gameObject.transform);
-        button.GetComponent<Button>().onClick.AddListener(() => OnClick(data.Prefab, button));
+        button.GetComponent<Button>().onClick.AddListener(() => OnClick(data, button));
         button.transform.GetChild(0).GetComponent<Image>().sprite = data.Sprite;
     }
 
-    void OnClick(GameObject prefabToSpawn, GameObject buttonRef)
+    void OnClick(PlaceableObjectData data, GameObject buttonRef)
     {
-        GameObject obj = Instantiate(prefabToSpawn);
+        GameObject obj = Instantiate(data.Prefab);
+        obj.transform.localScale = data.Scaling;
 
-        gameStateController.StartPlacingObject(obj, buttonRef);
+        gameStateController.StartPlacingObject(obj, buttonRef, data);
     }
 }

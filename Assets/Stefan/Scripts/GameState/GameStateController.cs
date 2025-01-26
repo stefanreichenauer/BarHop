@@ -39,6 +39,7 @@ public class GameStateController : MonoBehaviour
     bool canPlaceObject = false;
     Vector3 oldPosition;
     bool isMovingPlacedObject = false;
+    RotationAxis currentRotationAxis = RotationAxis.Z;
 
     [Header("Placement Settings")]
     [SerializeField] private Vector2 collisionCheckBoxSize = Vector2.one;
@@ -112,9 +113,6 @@ public class GameStateController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
-                PlaceableObjectMarkComponent markComponent = objectToPlace.AddComponent<PlaceableObjectMarkComponent>();
-                markComponent.buttonReference = activeButton;
-
                 objectToPlace = null;
 
                 activeButton.SetActive(false);
@@ -126,7 +124,23 @@ public class GameStateController : MonoBehaviour
 
         if (mouseWheelInput != 0f)
         {
-            objectToPlace.transform.Rotate(new Vector3(0, 0, mouseWheelInput * rotationSpeed));
+            float rotationAmount = mouseWheelInput * rotationSpeed;
+            Vector3 rotation = Vector3.zero;
+
+            switch(currentRotationAxis)
+            {
+                case RotationAxis.X:
+                    rotation.x = rotationAmount;
+                    break;
+                case RotationAxis.Y:
+                    rotation.y = rotationAmount;
+                    break; 
+                case RotationAxis.Z:
+                    rotation.z = rotationAmount;
+                    break;
+            }
+
+            objectToPlace.transform.Rotate(rotation);
         }
 
         if (objectToPlace != null)
@@ -180,6 +194,7 @@ public class GameStateController : MonoBehaviour
                     isMovingPlacedObject = true;
                     objectToPlace = hitParent;
                     SetActiveGameState(GameState.PLACING_OBJECTS);
+                    currentRotationAxis = markComponent.data.RotationAxis;
                 }
             }
         }
@@ -276,11 +291,16 @@ public class GameStateController : MonoBehaviour
         }
     }
 
-    public void StartPlacingObject(GameObject obj, GameObject buttonRef)
+    public void StartPlacingObject(GameObject obj, GameObject buttonRef, PlaceableObjectData data)
     {
         SetActiveGameState(GameState.PLACING_OBJECTS);
         objectToPlace = obj;
         activeButton = buttonRef;
+        currentRotationAxis = data.RotationAxis;
+
+        PlaceableObjectMarkComponent markComponent = objectToPlace.AddComponent<PlaceableObjectMarkComponent>();
+        markComponent.buttonReference = activeButton;
+        markComponent.data = data;
     }
 
 }
