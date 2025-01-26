@@ -39,7 +39,7 @@ public class GameStateController : MonoBehaviour
     bool canPlaceObject = false;
     Vector3 oldPosition;
     bool isMovingPlacedObject = false;
-    RotationAxis currentRotationAxis = RotationAxis.Z;
+    RotationAxis currentRotationAxis = RotationAxis.Z_PLUS;
 
     [Header("Placement Settings")]
     [SerializeField] private Vector2 collisionCheckBoxSize = Vector2.one;
@@ -129,14 +129,23 @@ public class GameStateController : MonoBehaviour
 
             switch(currentRotationAxis)
             {
-                case RotationAxis.X:
+                case RotationAxis.X_PLUS:
                     rotation.x = rotationAmount;
                     break;
-                case RotationAxis.Y:
+                case RotationAxis.Y_PLUS:
                     rotation.y = rotationAmount;
                     break; 
-                case RotationAxis.Z:
+                case RotationAxis.Z_PLUS:
                     rotation.z = rotationAmount;
+                    break;
+                case RotationAxis.X_MINUS:
+                    rotation.x = -rotationAmount;
+                    break;
+                case RotationAxis.Y_MINUS:
+                    rotation.y = -rotationAmount;
+                    break;
+                case RotationAxis.Z_MINUS:
+                    rotation.z = -rotationAmount;
                     break;
             }
 

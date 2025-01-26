@@ -15,4 +15,4 @@ MonoBehaviour:
   Sprite: {fileID: 21300000, guid: caefda80a69da2143a0536687dbea9d2, type: 3}
   Prefab: {fileID: 5461881552582173815, guid: 706218f9bc1bffd4180b52a6251c4f0f, type: 3}
   Scaling: {x: 1, y: 1, z: 1}
-  RotationAxis: 2
+  RotationAxis: 4
