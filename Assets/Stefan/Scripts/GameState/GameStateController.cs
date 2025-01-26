@@ -19,6 +19,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] Vector3 bubbleStartVelocity;
     private Vector3 bubbleOriginPos;
     private MeshRenderer bubbleRenderer;
+    private BubblePopper bubblePopper;
 
     [Header("UI Elements")]
     [SerializeField] Button startButton;
@@ -44,44 +45,98 @@ public class GameStateController : MonoBehaviour
 
     [Header("Placement Settings")]
     [SerializeField] private Vector2 collisionCheckBoxSize = Vector2.one;
-    [SerializeField] float rotationSpeed = 100f;
+    [SerializeField] float rotationSpeed = 15f;
 
-    private void Start()
+    private InputAction leftMouseClick;
+    private InputAction rightMouseClick;
+
+    private void Awake()
     {
-        bubbleRenderer = bubble.GetComponent<MeshRenderer>();
-        bubbleOriginPos = bubble.transform.position;
+        leftMouseClick = new InputAction(binding: "<Mouse>/leftButton");
+        leftMouseClick.performed += ctx => LeftMouseClicked();
+        leftMouseClick.Enable();
 
-        StopSimulation();
-
-        startButton.onClick.AddListener(() => StartSimulation());
-        stopButton.onClick.AddListener(() => StopSimulation());
-        restartButton.onClick.AddListener(() => RestartLevel());
-        backToLevelSelectButton.onClick.AddListener(() => LoadLevelSelect());
-        deleteObjectButton.onClick.AddListener(() => ActivateDeleteMode());
+        rightMouseClick = new InputAction(binding: "<Mouse>/rightButton");
+        rightMouseClick.performed += ctx => RightMouseClicked();
+        rightMouseClick.Enable();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        switch (currentGameState)
+        leftMouseClick.Enable();
+        rightMouseClick.Enable();
+    }
+
+    private void OnDisable()
+    {
+        leftMouseClick.Disable();
+        rightMouseClick.Disable();
+    }
+
+    private void LeftMouseClicked()
+    {
+        if (currentGameState == GameState.PLACING_OBJECTS)
         {
-            case GameState.SIMULATION:
-                break;
-            case GameState.PLACING_OBJECTS:
-                HandlePlacingModeUpdate();
-                break;
-            case GameState.CHOOSING_OBJECTS:
-                HandleChoosingModeUpdate();
-                break;
-            case GameState.DELETE_OBJECTS:
-                HandleDeletingModeUpdate();
-                break;
+            if (canPlaceObject)
+            {
+                objectToPlace = null;
+
+                if (activeButton != null)
+                {
+                    activeButton.SetActive(false);
+                }
+                SetActiveGameState(GameState.CHOOSING_OBJECTS);
+            }
+
+            return;
+        }
+
+        if (currentGameState == GameState.DELETE_OBJECTS)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                GameObject hitParent = GetRootParent(hit.collider.gameObject);
+                PlaceableObjectMarkComponent markComponent = hitParent.GetComponent<PlaceableObjectMarkComponent>();
+                if (markComponent != null)
+                {
+                    markComponent.buttonReference.SetActive(true);
+                    Destroy(hitParent);
+                    SetActiveGameState(GameState.CHOOSING_OBJECTS);
+                }
+            }
+
+            return;
+        }
+
+        if (currentGameState == GameState.CHOOSING_OBJECTS)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                GameObject hitParent = GetRootParent(hit.collider.gameObject);
+                PlaceableObjectMarkComponent markComponent = hitParent.GetComponent<PlaceableObjectMarkComponent>();
+                if (markComponent != null)
+                {
+                    oldPosition = hitParent.transform.position;
+                    isMovingPlacedObject = true;
+                    objectToPlace = hitParent;
+                    SetActiveGameState(GameState.PLACING_OBJECTS);
+                    currentRotationAxis = markComponent.data.RotationAxis;
+                }
+            }
+
+            return;
         }
     }
 
-    private void HandlePlacingModeUpdate()
+    private void RightMouseClicked()
     {
-        
-        if (Input.GetButtonDown("Cancel"))
+        if(currentGameState == GameState.PLACING_OBJECTS)
         {
             if (isMovingPlacedObject)
             {
@@ -94,10 +149,43 @@ public class GameStateController : MonoBehaviour
             }
 
             objectToPlace = null;
+            activeButton = null;
+            SetActiveGameState(GameState.CHOOSING_OBJECTS);
+            return;
+        } 
+        
+        if(currentGameState == GameState.DELETE_OBJECTS)
+        {
             SetActiveGameState(GameState.CHOOSING_OBJECTS);
             return;
         }
+    }
 
+    private void Start()
+    {
+        bubbleRenderer = bubble.GetComponent<MeshRenderer>();
+        bubblePopper = bubble.GetComponent<BubblePopper>();
+        bubbleOriginPos = bubble.transform.position;
+        StopSimulation();
+
+        startButton.onClick.AddListener(() => StartSimulation());
+        stopButton.onClick.AddListener(() => StopSimulation());
+        restartButton.onClick.AddListener(() => RestartLevel());
+        backToLevelSelectButton.onClick.AddListener(() => LoadLevelSelect());
+        deleteObjectButton.onClick.AddListener(() => ActivateDeleteMode());
+    }
+
+    private void Update()
+    {
+        if (currentGameState == GameState.PLACING_OBJECTS)
+        {
+            HandlePlacingModeUpdate();
+        }
+    }
+
+    private void HandlePlacingModeUpdate()
+    {
+        // Check if object is colliding with anything
         canPlaceObject = true;
         Collider[] colliders = Physics.OverlapBox(objectToPlace.transform.position, new Vector3(collisionCheckBoxSize.x, collisionCheckBoxSize.y, 1f), Quaternion.identity);
 
@@ -111,18 +199,8 @@ public class GameStateController : MonoBehaviour
             break;
         }
 
-        if (canPlaceObject)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                objectToPlace = null;
-
-                activeButton.SetActive(false);
-                SetActiveGameState(GameState.CHOOSING_OBJECTS);
-            }
-        }
-
-        float mouseWheelInput = Input.GetAxis("Mouse ScrollWheel");
+        // Rotate object
+        float mouseWheelInput = Mouse.current.scroll.ReadValue().y; 
 
         if (mouseWheelInput != 0f)
         {
@@ -154,61 +232,10 @@ public class GameStateController : MonoBehaviour
             objectToPlace.transform.Rotate(rotation);
         }
 
-        if (objectToPlace != null)
-        {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            mousePosition.z = 0;
-            objectToPlace.transform.position = mousePosition;
-        }
-    }
-
-    private void HandleDeletingModeUpdate()
-    {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            SetActiveGameState(GameState.CHOOSING_OBJECTS);
-        }
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                GameObject hitParent = GetRootParent(hit.collider.gameObject);
-                PlaceableObjectMarkComponent markComponent = hitParent.GetComponent<PlaceableObjectMarkComponent>();
-                if (markComponent != null)
-                {
-                    markComponent.buttonReference.SetActive(true);
-                    Destroy(hitParent);
-                    SetActiveGameState(GameState.CHOOSING_OBJECTS);
-                }
-            }
-        }
-    }
-
-    private void HandleChoosingModeUpdate()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
-            {
-                GameObject hitParent = GetRootParent(hit.collider.gameObject);
-                PlaceableObjectMarkComponent markComponent = hitParent.GetComponent<PlaceableObjectMarkComponent>();
-                if (markComponent != null)
-                {
-                    oldPosition = hitParent.transform.position;
-                    isMovingPlacedObject = true;
-                    objectToPlace = hitParent;
-                    SetActiveGameState(GameState.PLACING_OBJECTS);
-                    currentRotationAxis = markComponent.data.RotationAxis;
-                }
-            }
-        }
+        // Object follows the mouse
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        mousePosition.z = 0;
+        objectToPlace.transform.position = mousePosition;
     }
 
     private GameObject GetRootParent(GameObject obj)
@@ -231,6 +258,11 @@ public class GameStateController : MonoBehaviour
         {
             bubbleRenderer.enabled = true;
         }
+        if (bubblePopper != null)
+        {
+            Debug.Log("Set bubble popped to false");
+            bubblePopper.is_popped = false;
+        }
         bubble.isKinematic = false;
         bubble.linearVelocity = bubbleStartVelocity;
     }
@@ -243,16 +275,21 @@ public class GameStateController : MonoBehaviour
         {
             bubbleRenderer.enabled = true;
         }
+        if (bubblePopper != null)
+        {
+            Debug.Log("Set bubble popped to false");
+            bubblePopper.is_popped = false;
+        }
         bubble.transform.position = bubbleOriginPos;
         bubble.isKinematic = true;
     }
 
-    private void LoadLevelSelect()
+    public void LoadLevelSelect()
     {
         SceneManager.LoadScene(levelSelectReference.name);
     }
 
-    private void RestartLevel()
+    public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -304,7 +341,6 @@ public class GameStateController : MonoBehaviour
 
     public void StartPlacingObject(GameObject obj, GameObject buttonRef, PlaceableObjectData data)
     {
-        SetActiveGameState(GameState.PLACING_OBJECTS);
         objectToPlace = obj;
         activeButton = buttonRef;
         currentRotationAxis = data.RotationAxis;
@@ -312,6 +348,8 @@ public class GameStateController : MonoBehaviour
         PlaceableObjectMarkComponent markComponent = objectToPlace.AddComponent<PlaceableObjectMarkComponent>();
         markComponent.buttonReference = activeButton;
         markComponent.data = data;
+
+        SetActiveGameState(GameState.PLACING_OBJECTS);
     }
 
 }
