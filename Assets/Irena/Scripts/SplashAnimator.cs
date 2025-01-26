@@ -12,9 +12,23 @@ public class SplashAnimator : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        foreach(ParticleSystem p in particleSystems)
+        if (other.gameObject.CompareTag("Bubble"))
         {
+            foreach (ParticleSystem p in particleSystems)
+            {
                 p.Play();
+            }
+        }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Bubble"))
+        {
+            foreach (ParticleSystem p in particleSystems)
+            {
+                p.Play();
+            }
         }
     }
 }
