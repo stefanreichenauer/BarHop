@@ -1004,6 +1004,8 @@ MonoBehaviour:
   - scene1
   - scene2
   - scene3
+  - scene4
+  - scene5
   - MainMenu
 --- !u!1 &8702982117468385155
 GameObject:
@@ -1069,6 +1071,18 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnLeft
       value: 
       objectReference: {fileID: 8142665503580791956}
+    - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6552042307235407374}
+    - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevelSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameStateController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 4463007810291638652, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1853,7 +1867,7 @@ PrefabInstance:
       objectReference: {fileID: 6158800417165995002}
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -1870,7 +1884,7 @@ PrefabInstance:
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 6552042307235407374}
+      objectReference: {fileID: 2809208903733579819}
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
@@ -1889,7 +1903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: StartSimulation
+      value: CloseSubMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
@@ -1901,7 +1915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GameStateController, Assembly-CSharp
+      value: SubMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
@@ -2563,10 +2577,14 @@ PrefabInstance:
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8663108759310104929}
+      objectReference: {fileID: 6552042307235407374}
     - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameStateController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4463007810291638652, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_Pivot.x

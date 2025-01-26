@@ -19,6 +19,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] Vector3 bubbleStartVelocity;
     private Vector3 bubbleOriginPos;
     private MeshRenderer bubbleRenderer;
+    private BubblePopper bubblePopper;
 
     [Header("UI Elements")]
     [SerializeField] Button startButton;
@@ -163,6 +164,7 @@ public class GameStateController : MonoBehaviour
     private void Start()
     {
         bubbleRenderer = bubble.GetComponent<MeshRenderer>();
+        bubblePopper = bubble.GetComponent<BubblePopper>();
         bubbleOriginPos = bubble.transform.position;
         StopSimulation();
 
@@ -256,6 +258,10 @@ public class GameStateController : MonoBehaviour
         {
             bubbleRenderer.enabled = true;
         }
+        if (bubblePopper != null)
+        {
+            bubblePopper.is_popped = false;
+        }
         bubble.isKinematic = false;
         bubble.linearVelocity = bubbleStartVelocity;
     }
@@ -267,6 +273,10 @@ public class GameStateController : MonoBehaviour
         if (bubbleRenderer != null)
         {
             bubbleRenderer.enabled = true;
+        }
+        if (bubblePopper != null)
+        {
+            bubblePopper.is_popped = false;
         }
         bubble.transform.position = bubbleOriginPos;
         bubble.isKinematic = true;

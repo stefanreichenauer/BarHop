@@ -6,7 +6,7 @@ public class WinCelebration : MonoBehaviour
 {
     [SerializeField] private float wait_after_goal_seconds;
     [SerializeField] private SubMenu submenu;
-
+    [SerializeField] private AudioSource splashSound;
     private void Start()
     {
         if (submenu == null)
@@ -17,6 +17,7 @@ public class WinCelebration : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        splashSound.Play();
         StartCoroutine(waitUntilCelebration());
     }
 
