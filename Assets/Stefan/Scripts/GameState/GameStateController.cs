@@ -37,6 +37,8 @@ public class GameStateController : MonoBehaviour
     GameObject activeButton;
     GameObject objectToPlace;
     bool canPlaceObject = false;
+    Vector3 oldPosition;
+    bool isMovingPlacedObject = false;
 
     [Header("Placement Settings")]
     [SerializeField] private Vector2 collisionCheckBoxSize = Vector2.one;
@@ -76,6 +78,23 @@ public class GameStateController : MonoBehaviour
 
     private void HandlePlacingModeUpdate()
     {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (isMovingPlacedObject)
+            {
+                objectToPlace.transform.position = oldPosition;
+                isMovingPlacedObject = false;
+            }
+            else
+            {
+                Destroy(objectToPlace);
+            }
+
+            objectToPlace = null;
+            SetActiveGameState(GameState.CHOOSING_OBJECTS);
+            return;
+        }
+
         canPlaceObject = true;
         Collider[] colliders = Physics.OverlapBox(objectToPlace.transform.position, new Vector3(collisionCheckBoxSize.x, collisionCheckBoxSize.y, 1f), Quaternion.identity);
 
@@ -91,13 +110,6 @@ public class GameStateController : MonoBehaviour
 
         if (canPlaceObject)
         {
-            if (Input.GetButtonDown("Cancel"))
-            {
-                Destroy(objectToPlace);
-                objectToPlace = null;
-                SetActiveGameState(GameState.CHOOSING_OBJECTS);
-            }
-
             if (Input.GetMouseButtonDown(0))
             {
                 PlaceableObjectMarkComponent markComponent = objectToPlace.AddComponent<PlaceableObjectMarkComponent>();
@@ -164,6 +176,8 @@ public class GameStateController : MonoBehaviour
                 PlaceableObjectMarkComponent markComponent = hitParent.GetComponent<PlaceableObjectMarkComponent>();
                 if (markComponent != null)
                 {
+                    oldPosition = hitParent.transform.position;
+                    isMovingPlacedObject = true;
                     objectToPlace = hitParent;
                     SetActiveGameState(GameState.PLACING_OBJECTS);
                 }
