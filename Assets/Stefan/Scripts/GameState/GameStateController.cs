@@ -81,6 +81,8 @@ public class GameStateController : MonoBehaviour
             {
                 objectToPlace = null;
 
+                isMovingPlacedObject = false;
+
                 if (activeButton != null)
                 {
                     activeButton.SetActive(false);
@@ -136,7 +138,7 @@ public class GameStateController : MonoBehaviour
 
     private void RightMouseClicked()
     {
-        if(currentGameState == GameState.PLACING_OBJECTS)
+        if (currentGameState == GameState.PLACING_OBJECTS)
         {
             if (isMovingPlacedObject)
             {
