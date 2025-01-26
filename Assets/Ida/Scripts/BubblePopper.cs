@@ -7,9 +7,12 @@ public class BubblePopper : MonoBehaviour
     [SerializeField] private AudioSource popSound;
     private bool is_popped;
 
+    private BubbleAnimator bubbleAnimator = null;
+
     private void Start()
     {
         bubbleRenderer = GetComponent<MeshRenderer>();
+        bubbleAnimator = GetComponentInChildren<BubbleAnimator>();
     }
     public void pop()
     {
@@ -18,6 +21,7 @@ public class BubblePopper : MonoBehaviour
             bubbleRenderer.enabled = false;
             popSound.Play();
             is_popped = true;
+            bubbleAnimator.PopBubble();
         }
     }
 }
