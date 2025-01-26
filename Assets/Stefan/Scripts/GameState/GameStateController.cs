@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public enum GameState
 {
@@ -79,6 +80,7 @@ public class GameStateController : MonoBehaviour
 
     private void HandlePlacingModeUpdate()
     {
+        
         if (Input.GetButtonDown("Cancel"))
         {
             if (isMovingPlacedObject)
@@ -154,7 +156,7 @@ public class GameStateController : MonoBehaviour
 
         if (objectToPlace != null)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10f));
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             mousePosition.z = 0;
             objectToPlace.transform.position = mousePosition;
         }
@@ -169,7 +171,7 @@ public class GameStateController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
@@ -190,7 +192,7 @@ public class GameStateController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
@@ -279,7 +281,7 @@ public class GameStateController : MonoBehaviour
                 backToLevelSelectButton.gameObject.SetActive(false);
                 placeableObjectChooserPanel.SetActive(false);
                 infoPanel.gameObject.SetActive(true);
-                infoPanelText.text = "Placing Object";
+                infoPanelText.text = "Placing Object - Press <Esc> to cancel";
                 break;
             case GameState.CHOOSING_OBJECTS:
                 startButton.gameObject.SetActive(true);
@@ -294,7 +296,7 @@ public class GameStateController : MonoBehaviour
                 restartButton.gameObject.SetActive(false);
                 backToLevelSelectButton.gameObject.SetActive(false);
                 infoPanel.gameObject.SetActive(true);
-                infoPanelText.text = "Deleting Object";
+                infoPanelText.text = "Deleting Object - Press <Esc> to cancel";
                 placeableObjectChooserPanel.SetActive(false);
                 break;
         }

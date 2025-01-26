@@ -159,7 +159,6 @@ MonoBehaviour:
   placeableObjectChooserPanel: {fileID: 5134204344114618850}
   infoPanel: {fileID: 333557019061765568}
   infoPanelText: {fileID: 6498738800133144811}
-  buttonListController: {fileID: 0}
   levelSelectReference: {fileID: 102900000, guid: 2a2425ef3491e2047a686e693d6e2041, type: 3}
   collisionCheckBoxSize: {x: 1, y: 1}
   rotationSpeed: 100
@@ -328,6 +327,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2030797791411223671, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 3448412840528786089, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -407,6 +410,14 @@ PrefabInstance:
     - target: {fileID: 3448412840528786089, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863274099037426223, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
+      propertyPath: m_fontSize
+      value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 5863274099037426223, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 7053840397531458691, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
       propertyPath: gameStateController
