@@ -985,7 +985,7 @@ MonoBehaviour:
   placeableObjectChooserPanel: {fileID: 5134204344114618850}
   infoPanel: {fileID: 8749565061078706573}
   infoPanelText: {fileID: 6498738800133144811}
-  levelSelectReference: {fileID: 102900000, guid: 2a2425ef3491e2047a686e693d6e2041, type: 3}
+  levelSelectReference: MainMenu
   collisionCheckBoxSize: {x: 1, y: 1}
   rotationSpeed: 15
 --- !u!114 &8260945479227560600

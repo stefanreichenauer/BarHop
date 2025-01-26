@@ -32,7 +32,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] TextMeshProUGUI infoPanelText;
 
     [Header("Level References")]
-    [SerializeField] UnityEditor.SceneAsset levelSelectReference;
+    [SerializeField] string levelSelectReference;
 
     GameState currentGameState = GameState.CHOOSING_OBJECTS;
 
@@ -288,7 +288,7 @@ public class GameStateController : MonoBehaviour
 
     public void LoadLevelSelect()
     {
-        SceneManager.LoadScene(levelSelectReference.name);
+        SceneManager.LoadScene(levelSelectReference);
     }
 
     public void RestartLevel()
