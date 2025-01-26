@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0825502fb994ee04db683cc1e6fc1d7d, type: 3}
+  m_Name: Board
+  m_EditorClassIdentifier: 
+  Sprite: {fileID: 0}
+  Prefab: {fileID: 7929036718041315060, guid: 0949f21d8b25e4948a25cdb7540c0537, type: 3}
+  Scaling: {x: 200, y: 200, z: 300}
+  RotationAxis: 1
