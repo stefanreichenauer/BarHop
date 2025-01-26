@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0825502fb994ee04db683cc1e6fc1d7d, type: 3}
-  m_Name: Fan
+  m_Name: Board
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: caefda80a69da2143a0536687dbea9d2, type: 3}
-  Prefab: {fileID: 5461881552582173815, guid: 706218f9bc1bffd4180b52a6251c4f0f, type: 3}
-  Scaling: {x: 1, y: 1, z: 1}
-  RotationAxis: 4
+  Sprite: {fileID: 0}
+  Prefab: {fileID: 7929036718041315060, guid: 0949f21d8b25e4948a25cdb7540c0537, type: 3}
+  Scaling: {x: 200, y: 200, z: 300}
+  RotationAxis: 1

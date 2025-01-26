@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public enum GameState
 {
@@ -39,7 +40,7 @@ public class GameStateController : MonoBehaviour
     bool canPlaceObject = false;
     Vector3 oldPosition;
     bool isMovingPlacedObject = false;
-    RotationAxis currentRotationAxis = RotationAxis.Z;
+    RotationAxis currentRotationAxis = RotationAxis.Z_PLUS;
 
     [Header("Placement Settings")]
     [SerializeField] private Vector2 collisionCheckBoxSize = Vector2.one;
@@ -79,6 +80,7 @@ public class GameStateController : MonoBehaviour
 
     private void HandlePlacingModeUpdate()
     {
+        
         if (Input.GetButtonDown("Cancel"))
         {
             if (isMovingPlacedObject)
@@ -129,14 +131,23 @@ public class GameStateController : MonoBehaviour
 
             switch(currentRotationAxis)
             {
-                case RotationAxis.X:
+                case RotationAxis.X_PLUS:
                     rotation.x = rotationAmount;
                     break;
-                case RotationAxis.Y:
+                case RotationAxis.Y_PLUS:
                     rotation.y = rotationAmount;
                     break; 
-                case RotationAxis.Z:
+                case RotationAxis.Z_PLUS:
                     rotation.z = rotationAmount;
+                    break;
+                case RotationAxis.X_MINUS:
+                    rotation.x = -rotationAmount;
+                    break;
+                case RotationAxis.Y_MINUS:
+                    rotation.y = -rotationAmount;
+                    break;
+                case RotationAxis.Z_MINUS:
+                    rotation.z = -rotationAmount;
                     break;
             }
 
@@ -145,7 +156,7 @@ public class GameStateController : MonoBehaviour
 
         if (objectToPlace != null)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10f));
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             mousePosition.z = 0;
             objectToPlace.transform.position = mousePosition;
         }
@@ -160,7 +171,7 @@ public class GameStateController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
@@ -181,7 +192,7 @@ public class GameStateController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))

@@ -570,46 +570,6 @@ PrefabInstance:
       propertyPath: bubble
       value: 
       objectReference: {fileID: 1679869284}
-    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8663108759310104929, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
       propertyPath: m_Name
       value: GameStateManager
