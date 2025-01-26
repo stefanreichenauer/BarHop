@@ -54,17 +54,21 @@ public class ButtonListController : MonoBehaviour
                     Destroy(objectToPlace);
                     objectToPlace = null;
                     isInPlacementMode = false;
-                    gameStateController.HandleUIGameStateChange(GameState.CHOOSING_OBJECTS); 
+                    gameStateController.SetActiveGameState(GameState.CHOOSING_OBJECTS); 
                 }
 
                 if (Input.GetMouseButtonDown(0))
                 {
+                    PlaceableObjectMarkComponent markComponent = objectToPlace.AddComponent<PlaceableObjectMarkComponent>();
+                    markComponent.buttonReference = activeButton;
+
                     buttonPanel.SetActive(true);
                     placementActivePanel.SetActive(false);
                     objectToPlace = null;
                     isInPlacementMode = false;
-                    Destroy(activeButton);
-                    gameStateController.HandleUIGameStateChange(GameState.CHOOSING_OBJECTS);
+                    //Destroy(activeButton);
+                    activeButton.SetActive(false);
+                    gameStateController.SetActiveGameState(GameState.CHOOSING_OBJECTS);
                 }
             }
 
@@ -105,6 +109,6 @@ public class ButtonListController : MonoBehaviour
 
         buttonPanel.SetActive(false);
         placementActivePanel.SetActive(true);
-        gameStateController.HandleUIGameStateChange(GameState.PLACING_OBJECTS);
+        gameStateController.SetActiveGameState(GameState.PLACING_OBJECTS);
     }
 }
