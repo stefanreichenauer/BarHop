@@ -80,7 +80,10 @@ public class GameStateController : MonoBehaviour
             {
                 objectToPlace = null;
 
-                activeButton.SetActive(false);
+                if (activeButton != null)
+                {
+                    activeButton.SetActive(false);
+                }
                 SetActiveGameState(GameState.CHOOSING_OBJECTS);
             }
 
@@ -145,6 +148,7 @@ public class GameStateController : MonoBehaviour
             }
 
             objectToPlace = null;
+            activeButton = null;
             SetActiveGameState(GameState.CHOOSING_OBJECTS);
             return;
         } 
