@@ -34,6 +34,14 @@ public class GameStateController : MonoBehaviour
 
     GameState currentGameState = GameState.CHOOSING_OBJECTS;
 
+    GameObject activeButton;
+    GameObject objectToPlace;
+    bool canPlaceObject = false;
+
+    [Header("Placement Settings")]
+    [SerializeField] private Vector2 collisionCheckBoxSize = Vector2.one;
+    [SerializeField] float rotationSpeed = 100f;
+
     private void Start()
     {
         bubbleRenderer = bubble.GetComponent<MeshRenderer>();
@@ -50,28 +58,114 @@ public class GameStateController : MonoBehaviour
 
     private void Update()
     {
-        if (currentGameState == GameState.DELETE_OBJECTS)
+        switch (currentGameState)
+        {
+            case GameState.SIMULATION:
+                break;
+            case GameState.PLACING_OBJECTS:
+                HandlePlacingModeUpdate();
+                break;
+            case GameState.CHOOSING_OBJECTS:
+                HandleChoosingModeUpdate();
+                break;
+            case GameState.DELETE_OBJECTS:
+                HandleDeletingModeUpdate();
+                break;
+        }
+    }
+
+    private void HandlePlacingModeUpdate()
+    {
+        canPlaceObject = true;
+        Collider[] colliders = Physics.OverlapBox(objectToPlace.transform.position, new Vector3(collisionCheckBoxSize.x, collisionCheckBoxSize.y, 1f), Quaternion.identity);
+
+        foreach (var collider in colliders)
+        {
+            if (GetRootParent(collider.gameObject) == objectToPlace)
+            {
+                continue;
+            }
+            canPlaceObject = false;
+            break;
+        }
+
+        if (canPlaceObject)
         {
             if (Input.GetButtonDown("Cancel"))
             {
+                Destroy(objectToPlace);
+                objectToPlace = null;
                 SetActiveGameState(GameState.CHOOSING_OBJECTS);
             }
-            
+
             if (Input.GetMouseButtonDown(0))
             {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
+                PlaceableObjectMarkComponent markComponent = objectToPlace.AddComponent<PlaceableObjectMarkComponent>();
+                markComponent.buttonReference = activeButton;
 
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+                objectToPlace = null;
+
+                activeButton.SetActive(false);
+                SetActiveGameState(GameState.CHOOSING_OBJECTS);
+            }
+        }
+
+        float mouseWheelInput = Input.GetAxis("Mouse ScrollWheel");
+
+        if (mouseWheelInput != 0f)
+        {
+            objectToPlace.transform.Rotate(new Vector3(0, 0, mouseWheelInput * rotationSpeed));
+        }
+
+        if (objectToPlace != null)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10f));
+            mousePosition.z = 0;
+            objectToPlace.transform.position = mousePosition;
+        }
+    }
+
+    private void HandleDeletingModeUpdate()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            SetActiveGameState(GameState.CHOOSING_OBJECTS);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                GameObject hitParent = GetRootParent(hit.collider.gameObject);
+                PlaceableObjectMarkComponent markComponent = hitParent.GetComponent<PlaceableObjectMarkComponent>();
+                if (markComponent != null)
                 {
-                    GameObject hitParent = GetRootParent(hit.collider.gameObject);
-                    PlaceableObjectMarkComponent markComponent = hitParent.GetComponent<PlaceableObjectMarkComponent>();
-                    if (markComponent != null)
-                    {
-                        markComponent.buttonReference.SetActive(true);
-                        Destroy(hitParent);
-                        SetActiveGameState(GameState.CHOOSING_OBJECTS);
-                    }
+                    markComponent.buttonReference.SetActive(true);
+                    Destroy(hitParent);
+                    SetActiveGameState(GameState.CHOOSING_OBJECTS);
+                }
+            }
+        }
+    }
+
+    private void HandleChoosingModeUpdate()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                GameObject hitParent = GetRootParent(hit.collider.gameObject);
+                PlaceableObjectMarkComponent markComponent = hitParent.GetComponent<PlaceableObjectMarkComponent>();
+                if (markComponent != null)
+                {
+                    objectToPlace = hitParent;
+                    SetActiveGameState(GameState.PLACING_OBJECTS);
                 }
             }
         }
@@ -88,7 +182,6 @@ public class GameStateController : MonoBehaviour
 
         return current.gameObject;
     }
-
 
     public void StartSimulation()
     {
@@ -146,6 +239,7 @@ public class GameStateController : MonoBehaviour
                 startButton.gameObject.SetActive(false);
                 restartButton.gameObject.SetActive(false);
                 backToLevelSelectButton.gameObject.SetActive(false);
+                placeableObjectChooserPanel.SetActive(false);
                 infoPanel.gameObject.SetActive(true);
                 infoPanelText.text = "Placing Object";
                 break;
@@ -166,6 +260,13 @@ public class GameStateController : MonoBehaviour
                 placeableObjectChooserPanel.SetActive(false);
                 break;
         }
+    }
+
+    public void StartPlacingObject(GameObject obj, GameObject buttonRef)
+    {
+        SetActiveGameState(GameState.PLACING_OBJECTS);
+        objectToPlace = obj;
+        activeButton = buttonRef;
     }
 
 }

@@ -159,7 +159,10 @@ MonoBehaviour:
   placeableObjectChooserPanel: {fileID: 5134204344114618850}
   infoPanel: {fileID: 333557019061765568}
   infoPanelText: {fileID: 6498738800133144811}
+  buttonListController: {fileID: 0}
   levelSelectReference: {fileID: 102900000, guid: 2a2425ef3491e2047a686e693d6e2041, type: 3}
+  collisionCheckBoxSize: {x: 1, y: 1}
+  rotationSpeed: 100
 --- !u!1001 &803894125162559070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,6 +320,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4378495512584406059}
     m_Modifications:
+    - target: {fileID: 1065226094237082413, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
+      propertyPath: gameStateController
+      value: 
+      objectReference: {fileID: 6552042307235407374}
     - target: {fileID: 1139314416074888964, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -409,7 +416,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlacementModeHUD
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7053840397531458691, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3448412840528786089, guid: bc0073864bf513349a8b80ce01804dae, type: 3}

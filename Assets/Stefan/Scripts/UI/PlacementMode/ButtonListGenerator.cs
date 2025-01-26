@@ -11,6 +11,9 @@ public class ButtonListGenerator : MonoBehaviour
     [SerializeField]
     public PlaceableObjectsPerLevel objectData;
 
+    [SerializeField]
+    private GameStateController gameStateController;
+
     void Start()
     {
         for (int i = 0; i < objectData.objects.Length; i++)
@@ -29,7 +32,8 @@ public class ButtonListGenerator : MonoBehaviour
 
     void OnClick(GameObject prefabToSpawn, GameObject buttonRef)
     {
-        ButtonListController buttonListController = gameObject.GetComponentInParent<ButtonListController>();
-        buttonListController.OnButtonClicked(prefabToSpawn, buttonRef);
+        GameObject obj = Instantiate(prefabToSpawn);
+
+        gameStateController.StartPlacingObject(obj, buttonRef);
     }
 }
