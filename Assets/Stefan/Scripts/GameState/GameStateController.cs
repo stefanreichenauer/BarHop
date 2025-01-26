@@ -32,7 +32,7 @@ public class GameStateController : MonoBehaviour
     [SerializeField] TextMeshProUGUI infoPanelText;
 
     [Header("Level References")]
-    [SerializeField] UnityEditor.SceneAsset levelSelectReference;
+    [SerializeField] string levelSelectReference;
 
     GameState currentGameState = GameState.CHOOSING_OBJECTS;
 
@@ -80,6 +80,8 @@ public class GameStateController : MonoBehaviour
             if (canPlaceObject)
             {
                 objectToPlace = null;
+
+                isMovingPlacedObject = false;
 
                 if (activeButton != null)
                 {
@@ -136,7 +138,7 @@ public class GameStateController : MonoBehaviour
 
     private void RightMouseClicked()
     {
-        if(currentGameState == GameState.PLACING_OBJECTS)
+        if (currentGameState == GameState.PLACING_OBJECTS)
         {
             if (isMovingPlacedObject)
             {
@@ -286,7 +288,7 @@ public class GameStateController : MonoBehaviour
 
     public void LoadLevelSelect()
     {
-        SceneManager.LoadScene(levelSelectReference.name);
+        SceneManager.LoadScene(levelSelectReference);
     }
 
     public void RestartLevel()

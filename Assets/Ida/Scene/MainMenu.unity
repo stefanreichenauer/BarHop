@@ -176,16 +176,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Text Text Text
+  m_text: 'Visual Programming:  Irena Ruprechter
 
-    Text Text Text
 
-    More Text
+    Programming and 2D Design: 
+    Ida Stettner
 
-    And even more Text
 
-    Maybe
-    even in different fonts?'
+    Programmign:  Stefan Reichenauer
+
+
+    3D Models, Level Design: 
+    Thomas Kerecz'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1b06fdb067207d9479c7f7193d9a59e5, type: 2}
   m_sharedMaterial: {fileID: -8404908303427194027, guid: 1b06fdb067207d9479c7f7193d9a59e5, type: 2}

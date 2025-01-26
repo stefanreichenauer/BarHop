@@ -985,7 +985,7 @@ MonoBehaviour:
   placeableObjectChooserPanel: {fileID: 5134204344114618850}
   infoPanel: {fileID: 8749565061078706573}
   infoPanelText: {fileID: 6498738800133144811}
-  levelSelectReference: {fileID: 102900000, guid: 2a2425ef3491e2047a686e693d6e2041, type: 3}
+  levelSelectReference: MainMenu
   collisionCheckBoxSize: {x: 1, y: 1}
   rotationSpeed: 15
 --- !u!114 &8260945479227560600
@@ -1417,10 +1417,6 @@ PrefabInstance:
       propertyPath: gameStateController
       value: 
       objectReference: {fileID: 6552042307235407374}
-    - target: {fileID: 1076529699013919898, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 1139314416074888964, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
       propertyPath: m_IsActive
       value: 1
