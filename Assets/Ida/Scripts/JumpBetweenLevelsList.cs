@@ -13,6 +13,7 @@ public class JumpBetweenLevelsList : MonoBehaviour
     public void LoadNextLevel()
     {
         string current_scene_name = SceneManager.GetActiveScene().name;
+
         int current_index = levels.IndexOf(current_scene_name);
         if (current_index != -1)
         {

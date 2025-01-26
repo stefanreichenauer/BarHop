@@ -1352,6 +1352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounce: {fileID: 11400000, guid: 0786a690715bb8844bca726d63664e9e, type: 2}
+  additionalBounceSound: {fileID: 0}
 --- !u!65 &1358078573
 BoxCollider:
   m_ObjectHideFlags: 0
