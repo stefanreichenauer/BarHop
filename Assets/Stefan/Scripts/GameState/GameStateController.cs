@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public enum GameState
 {
@@ -79,6 +80,7 @@ public class GameStateController : MonoBehaviour
 
     private void HandlePlacingModeUpdate()
     {
+        
         if (Input.GetButtonDown("Cancel"))
         {
             if (isMovingPlacedObject)
@@ -154,7 +156,7 @@ public class GameStateController : MonoBehaviour
 
         if (objectToPlace != null)
         {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0, 0, 10f));
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             mousePosition.z = 0;
             objectToPlace.transform.position = mousePosition;
         }
@@ -169,7 +171,7 @@ public class GameStateController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
@@ -190,7 +192,7 @@ public class GameStateController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity))
