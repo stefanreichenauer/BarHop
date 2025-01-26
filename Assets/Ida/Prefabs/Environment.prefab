@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63f89a454f84fc4599b15235ec5ca41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectColor: {r: 0.64135987, g: 0.78867924, b: 0.77927583, a: 1}
+  objectColor: {r: 0.44772518, g: 0.5169811, b: 0.51323754, a: 1}
   specularColor: {r: 1, g: 1, b: 1, a: 1}
   innerGlowColor: {r: 0.85660374, g: 0.85660374, b: 0.85660374, a: 1}
   rimColor: {r: 0.8262336, g: 0.8014596, b: 0.8867924, a: 1}
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b63f89a454f84fc4599b15235ec5ca41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectColor: {r: 0.64135987, g: 0.78867924, b: 0.77927583, a: 1}
+  objectColor: {r: 0.44772518, g: 0.5169811, b: 0.51323754, a: 1}
   specularColor: {r: 1, g: 1, b: 1, a: 1}
   innerGlowColor: {r: 0.85660374, g: 0.85660374, b: 0.85660374, a: 1}
   rimColor: {r: 0.8262336, g: 0.8014596, b: 0.8867924, a: 1}
