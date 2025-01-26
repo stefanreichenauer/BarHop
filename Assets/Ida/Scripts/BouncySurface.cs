@@ -6,6 +6,7 @@ using UnityEngine;
 public class BouncySurface : MonoBehaviour
 {
     [SerializeField] private Bounce bounce;
+    [SerializeField] private AudioSource additionalBounceSound;
 
     private Rigidbody otherRigidbody;
     private BubbleSoundPlayer bounceSound;
@@ -33,7 +34,10 @@ public class BouncySurface : MonoBehaviour
                 otherRigidbody.linearVelocity *= bounciness;
             }
             StopAllCoroutines();
-
+            if (additionalBounceSound != null)
+            {
+                additionalBounceSound.Play();
+            }
         }
         
     }

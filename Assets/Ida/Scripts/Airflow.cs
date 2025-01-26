@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class Airflow : MonoBehaviour
 {
-
+    [SerializeField] private AudioSource fanSound;
     [SerializeField] private PlaneDefiner planeDefiner;
     [SerializeField] private float airStrength;
 
@@ -29,6 +29,10 @@ public class Airflow : MonoBehaviour
             if (enteredRigidbody != null && other.gameObject.CompareTag("Bubble"))
             {
                 otherRigidbody = enteredRigidbody;
+                if (fanSound!=null)
+                {
+                    fanSound.Play();
+                }
             }
             else
             {
