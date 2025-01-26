@@ -14,10 +14,7 @@ public class SplashAnimator : MonoBehaviour
     {
         foreach(ParticleSystem p in particleSystems)
         {
-            if (!p.isPlaying)
-            {
                 p.Play();
-            }
         }
     }
 }
