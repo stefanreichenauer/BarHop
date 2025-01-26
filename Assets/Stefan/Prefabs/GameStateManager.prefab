@@ -1417,10 +1417,6 @@ PrefabInstance:
       propertyPath: gameStateController
       value: 
       objectReference: {fileID: 6552042307235407374}
-    - target: {fileID: 1076529699013919898, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 150
-      objectReference: {fileID: 0}
     - target: {fileID: 1139314416074888964, guid: bc0073864bf513349a8b80ce01804dae, type: 3}
       propertyPath: m_IsActive
       value: 1
