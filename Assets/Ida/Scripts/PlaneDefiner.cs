@@ -14,12 +14,13 @@ public class PlaneDefiner : MonoBehaviour
     }
     public Plane getPlane()
     {
+        myPlane = new Plane(planeNormal, transform.position);
         return myPlane;
     }
 
     public Vector2 getNormal()
     {
-
+        planeNormal = Vector3.Normalize(airflow.transform.position - fanSolids.transform.position);
         return new Vector2(planeNormal.x, planeNormal.y);
     }
 }

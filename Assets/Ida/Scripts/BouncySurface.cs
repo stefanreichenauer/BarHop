@@ -34,22 +34,26 @@ public class BouncySurface : MonoBehaviour
     }
     void OnCollisionEnter(Collision other)
     {
-        otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
-        BubblePopper popper = other.gameObject.GetComponent<BubblePopper>();
-
-        ApplyBubbleParameters bubbleParameter = otherRigidbody.GetComponent<ApplyBubbleParameters>();
-        if (bubbleParameter != null)
+        if (other.gameObject.CompareTag("Bubble"))
         {
-            collidingBounciness = bubbleParameter.getBounciness();
-            if (popper != null)
+            otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            BubblePopper popper = other.gameObject.GetComponent<BubblePopper>();
+
+            ApplyBubbleParameters bubbleParameter = otherRigidbody.GetComponent<ApplyBubbleParameters>();
+            if (bubbleParameter != null)
             {
-                StartCoroutine(shouldBubblePop(popper));
+                collidingBounciness = bubbleParameter.getBounciness();
+                if (popper != null)
+                {
+                    StartCoroutine(shouldBubblePop(popper));
+                }
+            }
+            else
+            {
+                collidingBounciness = -1;
             }
         }
-        else
-        {
-            collidingBounciness = -1;
-        }
+        
         
 
     }
