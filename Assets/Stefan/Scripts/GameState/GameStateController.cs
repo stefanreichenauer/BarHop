@@ -281,7 +281,7 @@ public class GameStateController : MonoBehaviour
                 backToLevelSelectButton.gameObject.SetActive(false);
                 placeableObjectChooserPanel.SetActive(false);
                 infoPanel.gameObject.SetActive(true);
-                infoPanelText.text = "Placing Object - Press <Esc> to cancel";
+                infoPanelText.text = "Placing Object";
                 break;
             case GameState.CHOOSING_OBJECTS:
                 startButton.gameObject.SetActive(true);
@@ -296,7 +296,7 @@ public class GameStateController : MonoBehaviour
                 restartButton.gameObject.SetActive(false);
                 backToLevelSelectButton.gameObject.SetActive(false);
                 infoPanel.gameObject.SetActive(true);
-                infoPanelText.text = "Deleting Object - Press <Esc> to cancel";
+                infoPanelText.text = "Deleting Object";
                 placeableObjectChooserPanel.SetActive(false);
                 break;
         }
