@@ -10,7 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4463007810291638640, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_Name
-      value: ObjectPlaceButton Variant
+      value: ObjectPlaceImageButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 4463007810291638641, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4463007810291638642, guid: e2005745e44d40649b85b9e8cb7aaa7b, type: 3}
       propertyPath: m_Sprite
