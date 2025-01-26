@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UISelectableSounds : MonoBehaviour, ISelectHandler, IPointerEnterHandler
+public class UISelectableSounds : MonoBehaviour, ISelectHandler
 {
     private Selectable selectable;
     [SerializeField] private AudioSource UIhoverSound;
@@ -51,21 +51,6 @@ public class UISelectableSounds : MonoBehaviour, ISelectHandler, IPointerEnterHa
             {
                 UIconfirmSound.Play();
             }
-        }
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        if (selectable != null)
-        {
-            if (selectable.interactable)
-            {
-                UIhoverSound.Play();
-            }
-        }
-        else
-        {
-            UIhoverSound.Play();
         }
     }
 }
