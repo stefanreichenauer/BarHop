@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0825502fb994ee04db683cc1e6fc1d7d, type: 3}
   m_Name: Jelly
   m_EditorClassIdentifier: 
-  DisplayName: Jelly
+  Sprite: {fileID: 21300000, guid: 91441197732b2944e9fa80eb952ca0eb, type: 3}
   Prefab: {fileID: 8764168210961044139, guid: 7453db5bdbc7f0d4aa1f7adc321b89e0, type: 3}
   previewModel: {fileID: 919132149155446097, guid: 0778724aa9395f948b15e52099874e36, type: 3}

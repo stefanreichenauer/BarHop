@@ -219,7 +219,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: Placing Object
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1b06fdb067207d9479c7f7193d9a59e5, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -285,7 +285,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &5489601650611712806
@@ -321,11 +321,11 @@ RectTransform:
   - {fileID: 6703681544598906782}
   m_Father: {fileID: 3448412840528786089}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: -20}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: -50, y: 0}
+  m_SizeDelta: {x: 400, y: 200}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &9204164574131096824
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -354,8 +354,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 589cd69db7888374c8d3fa67b762c216, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -399,7 +399,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -40}
+  m_SizeDelta: {x: -100, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1546507712287338254
 MonoBehaviour:
@@ -418,13 +418,13 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 3
   m_StartCorner: 0
-  m_StartAxis: 0
+  m_StartAxis: 1
   m_CellSize: {x: 50, y: 50}
   m_Spacing: {x: 10, y: 10}
-  m_Constraint: 1
-  m_ConstraintCount: 2
+  m_Constraint: 0
+  m_ConstraintCount: 1
 --- !u!114 &1065226094237082413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a245e2644bb6cb4eab832b0e1dd93ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 615840416763782759, guid: c96267460fdec8746be2a17470b70b16, type: 3}
+  buttonPrefab: {fileID: 8600096623440882611, guid: 93da034b9c1f91e438cb66b2adfa088d, type: 3}
   objectData: {fileID: 11400000, guid: 8c6a3e3ca7be89a47a3256ba99a6c311, type: 2}
 --- !u!1 &9122197779169913415
 GameObject:
@@ -555,4 +555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cedc1c5166904c49a77ed3b1b368bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabToPlace: {fileID: 5461881552582173815, guid: 706218f9bc1bffd4180b52a6251c4f0f, type: 3}
+  rotationSpeed: 100
+  gameStateController: {fileID: 0}
+  collisionCheckBoxSize: {x: 1, y: 1}

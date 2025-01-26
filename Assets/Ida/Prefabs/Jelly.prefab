@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 4503879648303474135}
   - component: {fileID: 876495738361587296}
   - component: {fileID: 6188888026839489640}
+  - component: {fileID: 2463661821920495172}
   m_Layer: 0
   m_Name: Jelly
   m_TagString: Untagged
@@ -318,7 +319,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6635103098713526782}
-  m_Mesh: {fileID: -8009307494050182544, guid: 0778724aa9395f948b15e52099874e36, type: 3}
+  m_Mesh: {fileID: -8009307494050182544, guid: 66e16be5460e6ec45a1e0e8a093b2fc9, type: 3}
 --- !u!23 &6188888026839489640
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -342,7 +343,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7d35b037bdc66e24aa12df910c110dad, type: 2}
+  - {fileID: -876546973899608171, guid: f7d97b67a61208942aff288f00e577da, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -364,6 +365,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2463661821920495172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635103098713526782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63f89a454f84fc4599b15235ec5ca41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectColor: {r: 0.216362, g: 1, b: 0, a: 1}
+  specularColor: {r: 0, g: 0, b: 0, a: 1}
+  innerGlowColor: {r: 0.9701388, g: 1, b: 0, a: 1}
+  rimColor: {r: 0.21919365, g: 0.23773581, b: 0.20050548, a: 1}
+  transparency: 1
 --- !u!1 &8764168210961044139
 GameObject:
   m_ObjectHideFlags: 0
