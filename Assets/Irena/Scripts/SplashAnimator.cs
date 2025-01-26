@@ -16,7 +16,6 @@ public class SplashAnimator : MonoBehaviour
         {
             if (!p.isPlaying)
             {
-                Debug.Log("Trigger enter");
                 p.Play();
             }
         }
