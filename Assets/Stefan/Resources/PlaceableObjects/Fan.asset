@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0825502fb994ee04db683cc1e6fc1d7d, type: 3}
   m_Name: Fan
   m_EditorClassIdentifier: 
-  DisplayName: Fan
+  Sprite: {fileID: 21300000, guid: caefda80a69da2143a0536687dbea9d2, type: 3}
   Prefab: {fileID: 5461881552582173815, guid: 706218f9bc1bffd4180b52a6251c4f0f, type: 3}
-  previewModel: {fileID: 919132149155446097, guid: b290bf56a3a7237408032cbbeecaae35, type: 3}
+  Scaling: {x: 1, y: 1, z: 1}
+  RotationAxis: 2

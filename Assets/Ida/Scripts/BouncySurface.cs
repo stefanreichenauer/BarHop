@@ -8,6 +8,7 @@ public class BouncySurface : MonoBehaviour
     [SerializeField] private Bounce bounce;
 
     private Rigidbody otherRigidbody;
+    private BubbleSoundPlayer bounceSound;
     private float collidingBounciness = -1;
     private float bounciness;
 
@@ -19,6 +20,10 @@ public class BouncySurface : MonoBehaviour
     {
         if (otherRigidbody != null)
         {
+            if (bounceSound != null)
+            {
+                bounceSound.playBounceSound();
+            }
             if (collidingBounciness != -1)
             {
                 otherRigidbody.linearVelocity = otherRigidbody.linearVelocity * bounciness * collidingBounciness;
@@ -34,22 +39,26 @@ public class BouncySurface : MonoBehaviour
     }
     void OnCollisionEnter(Collision other)
     {
-        otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
-        BubblePopper popper = other.gameObject.GetComponent<BubblePopper>();
-
-        ApplyBubbleParameters bubbleParameter = otherRigidbody.GetComponent<ApplyBubbleParameters>();
-        if (bubbleParameter != null)
+        if (other.gameObject.CompareTag("Bubble"))
         {
-            collidingBounciness = bubbleParameter.getBounciness();
-            if (popper != null)
+            otherRigidbody = other.gameObject.GetComponent<Rigidbody>();
+            BubblePopper popper = other.gameObject.GetComponent<BubblePopper>();
+            bounceSound = other.gameObject.GetComponent<BubbleSoundPlayer>();
+            ApplyBubbleParameters bubbleParameter = otherRigidbody.GetComponent<ApplyBubbleParameters>();
+            if (bubbleParameter != null)
             {
-                StartCoroutine(shouldBubblePop(popper));
+                collidingBounciness = bubbleParameter.getBounciness();
+                if (popper != null)
+                {
+                    StartCoroutine(shouldBubblePop(popper));
+                }
+            }
+            else
+            {
+                collidingBounciness = -1;
             }
         }
-        else
-        {
-            collidingBounciness = -1;
-        }
+        
         
 
     }

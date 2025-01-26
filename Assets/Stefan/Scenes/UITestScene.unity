@@ -327,7 +327,7 @@ Transform:
   m_GameObject: {fileID: 1395881723}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -570,38 +570,50 @@ PrefabInstance:
       propertyPath: bubble
       value: 
       objectReference: {fileID: 1679869284}
-    - target: {fileID: 6552042307235407374, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: levelSelect
-      value: 
-      objectReference: {fileID: 102900000, guid: 2a2425ef3491e2047a686e693d6e2041, type: 3}
-    - target: {fileID: 6930139217030770517, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 6930139217030770517, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6983000469059848906, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7452491160088549281, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8663108759310104929, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
       propertyPath: m_Name
       value: GameStateManager
       objectReference: {fileID: 0}
-    - target: {fileID: 8799267033528499799, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 8799267033528499799, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 9032423928747426520, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 9032423928747426520, guid: e4ae1496ec0278c459e44ba2e5dbfa3d, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

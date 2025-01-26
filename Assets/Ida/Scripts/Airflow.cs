@@ -9,14 +9,14 @@ public class Airflow : MonoBehaviour
 
     private Vector2 airflowVector;
     private Rigidbody otherRigidbody;
-    private Plane propellerPlane;
     private void Start()
     {
-        propellerPlane = planeDefiner.getPlane();
+        
         airflowVector = planeDefiner.getNormal()*airStrength;
     }
     private void OnTriggerEnter(Collider other)
     {
+        airflowVector = planeDefiner.getNormal() * airStrength;
         if (otherRigidbody != null)
         {
 
@@ -41,11 +41,7 @@ public class Airflow : MonoBehaviour
     {
         if (otherRigidbody!=null && !otherRigidbody.isKinematic)
         {
-            float distance_parameter = Mathf.Abs(propellerPlane.GetDistanceToPoint(other.transform.position));
-            if(distance_parameter == 0)
-            {
-                distance_parameter = 1;
-            }
+            
             float velocityX = otherRigidbody.linearVelocity.x;
             float velocityY = otherRigidbody.linearVelocity.y;
 

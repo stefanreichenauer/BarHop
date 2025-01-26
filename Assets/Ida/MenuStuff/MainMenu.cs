@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    //Waits for startGameSound to finish, doesn't start the sound itself
     [SerializeField] AudioSource startGameSound;
 
 
@@ -14,6 +15,7 @@ public class MainMenu : MonoBehaviour
     {
         if (startGameSound != null && startGameSound.isActiveAndEnabled)
         {
+
             yield return new WaitUntil(() => startGameSound.time > 0); //When Closing Sound started playing
             yield return new WaitUntil(() => startGameSound.time == 0); //Closing Sound stopped playing
         }
