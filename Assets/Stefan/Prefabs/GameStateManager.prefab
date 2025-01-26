@@ -1003,9 +1003,10 @@ MonoBehaviour:
   levels:
   - scene1
   - scene2
+  - scene5
   - scene3
   - scene4
-  - scene5
+  - scene6
   - MainMenu
 --- !u!1 &8702982117468385155
 GameObject:

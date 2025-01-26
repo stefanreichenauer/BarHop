@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Thomas/Scenes/scene1.unity
     guid: 7ecc1ef2988ecb149b6f5f64346a0ed1
   - enabled: 1
-    path: Assets/Thomas/Scenes/scene2.unity
+    path: Assets/Thomas/Scenes/scene6.unity
     guid: 1678b64e757e64847947798930597ae3
   - enabled: 1
     path: Assets/Thomas/Scenes/scene3.unity

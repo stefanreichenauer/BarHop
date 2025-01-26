@@ -260,6 +260,7 @@ public class GameStateController : MonoBehaviour
         }
         if (bubblePopper != null)
         {
+            Debug.Log("Set bubble popped to false");
             bubblePopper.is_popped = false;
         }
         bubble.isKinematic = false;
@@ -276,6 +277,7 @@ public class GameStateController : MonoBehaviour
         }
         if (bubblePopper != null)
         {
+            Debug.Log("Set bubble popped to false");
             bubblePopper.is_popped = false;
         }
         bubble.transform.position = bubbleOriginPos;
